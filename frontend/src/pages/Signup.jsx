@@ -6,7 +6,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4 py-10 text-white">
+    <div className="min-h-screen  bg-black flex items-center justify-center px-4 py-10 text-white">
       <div className="flex flex-col sm:flex-row gap-8 max-w-4xl w-full justify-center items-center">
         {/* Job Seeker Card */}
         <div

@@ -34,7 +34,7 @@ const CompanySignup = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
+    <div className="min-h-screen  mt-10 flex flex-col md:flex-row">
       {/* Left Side Branding */}
       <div className="hidden md:flex w-1/2  text-white items-center justify-center p-10">
         <div className="text-center">

@@ -33,7 +33,7 @@ const AnalyzeResume = () => {
           htmlFor="resume-upload"
           className="block text-zinc-300 text-sm font-[hel] mb-2"
         >
-          Upload your resume (PDF, DOCX):
+          Upload your resume (PDF):
         </label>
 
         <input

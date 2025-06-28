@@ -149,9 +149,10 @@ const Nav = () => {
           {user ? (
             <>
               <NavLink to="/profile" onClick={() => setIsOpen(false)}>
-                👤 Profile
+                profile
               </NavLink>
               <button
+                className="text-left w-full"
                 onClick={() => {
                   handleLogout();
                   setIsOpen(false);

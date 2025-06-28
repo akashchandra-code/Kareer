@@ -85,7 +85,7 @@ const CompanyProfile = () => {
   return url;
 };
   return (
-    <div className="min-h-screen flex justify-center items-center px-4 py-12 text-white">
+    <div className="min-h-screen  mt-10 flex justify-center items-center px-4 py-12 text-white">
       <form
         onSubmit={handleSubmit}
         className="p-8 rounded-xl w-full max-w-2xl shadow-xl border border-white/10"

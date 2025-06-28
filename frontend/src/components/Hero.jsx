@@ -31,9 +31,9 @@ const Hero = () => {
     return (
       <div className="w-full mt-24 md:mt-10 px-4 md:px-12 lg:px-24 py-20 font-[neu] relative">
         <div className="text-center md:text-left">
-          <h1 className="text-[2.3rem] sm:text-[3rem] md:text-[4.5rem] lg:text-[6rem] xl:text-[7rem] font-[neu] leading-tight md:leading-[1.2]">
+          <h1 className="text-[2.6rem] sm:text-[3rem] md:text-[4.5rem] lg:text-[6rem] xl:text-[7rem] font-[neu] leading-tight md:leading-[1.2]">
             Land <span className="text-[#24cfa5]">your dream</span>
-            <br className="hidden md:block" />
+            <br c />
             job with <br className="hidden md:block" />
             confidence.
           </h1>
