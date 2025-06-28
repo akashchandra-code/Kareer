@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/*
+  Font files should be placed in `frontend/public/fonts/`.
+  After building the React app, they will be accessible at `/fonts/`.
+*/
+
+@font-face {
+  font-family: gilroy;
+  src: url("/fonts/Gilroy-Bold_JK4cTGJOE (1).ttf"); /* Updated path */
+}
+
+@font-face {
+  font-family: hel;
+  src: url("/fonts/HelveticaNowDisplay-Regular_5Mzhp8KlA8_CAVTbnsPOM.woff2"); /* Updated path */
+}
+
+@font-face {
+  font-family: neu;
+  src: url("/fonts/NeueMachina-Light_gwWCZxVuQl.ttf"); /* Updated path */
+}
+
+/* Hide scrollbar but allow scrolling */
+html,
+body {
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  background-color: black;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
