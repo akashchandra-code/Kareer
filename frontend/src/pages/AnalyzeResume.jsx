@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { analyzeResume } from "../store/actions/AnalyzeActions";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+
 const AnalyzeResume = () => {
   const [file, setFile] = useState(null);
+  const [analyzed, setAnalyzed] = useState(false); 
   const dispatch = useDispatch();
 
   const { matchedJobs, loading, error } = useSelector((state) => state.analyze);
@@ -20,6 +22,7 @@ const AnalyzeResume = () => {
     }
 
     dispatch(analyzeResume(file));
+    setAnalyzed(true); 
   };
 
   return (
@@ -28,7 +31,7 @@ const AnalyzeResume = () => {
         Analyze Your Resume
       </h2>
 
-      <div className="w-full px-4 sm:px-6 lg:px-12 py-6 sm:py-8 rounded-2xl  shadow-lg">
+      <div className="w-full px-4 sm:px-6 lg:px-12 py-6 sm:py-8 rounded-2xl shadow-lg">
         <label
           htmlFor="resume-upload"
           className="block text-zinc-300 text-sm font-[hel] mb-2"
@@ -122,6 +125,12 @@ const AnalyzeResume = () => {
               ))}
             </div>
           </div>
+        )}
+
+        {analyzed && matchedJobs.length === 0 && !loading && !error && (
+          <p className="mt-12 text-center text-zinc-400 text-lg">
+            No recommended jobs based on your resume.
+          </p>
         )}
       </div>
     </div>

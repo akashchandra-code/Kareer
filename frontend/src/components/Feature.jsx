@@ -36,7 +36,7 @@ const features = [
 
 const Feature = () => {
   return (
-    <div className="w-full  py-20 px-6 mb-10 text-white">
+    <div className="w-full py-14 md:py-20 px-4  md:mb-10 text-white">
       <h1 className="text-[2.5rem] sm:text-[3rem] md:text-[5rem] font-[neu]  text-center mb-16 text-white">
         Features 
       </h1>

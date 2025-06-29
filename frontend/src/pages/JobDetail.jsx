@@ -14,6 +14,7 @@ const JobDetail = () => {
   const dispatch = useDispatch();
   const { job, loading } = useSelector((state) => state.job);
   const [resumeFile, setResumeFile] = useState(null);
+  const [applying, setApplying] = useState(false);
   const { appliedJobs } = useSelector((state) => state.application);
   const alreadyApplied = appliedJobs.includes(id);
   useEffect(() => {
@@ -31,11 +32,14 @@ const JobDetail = () => {
     formData.append("resume", resumeFile);
 
     try {
+      setApplying(true);
       await dispatch(applyForJob({ jobId: id, resume: formData }));
       toast.success("Applied successfully!");
       dispatch(getAppliedJobs());
     } catch (error) {
       toast.error(error || "Application failed. Please try again.");
+    } finally {
+      setApplying(false);
     }
   };
 
@@ -155,15 +159,19 @@ const JobDetail = () => {
           {/* Apply Button */}
           <button
             onClick={handleApply}
-            disabled={alreadyApplied}
+            disabled={alreadyApplied || applying}
             className={`w-full sm:w-auto py-3 px-8 rounded-lg text-lg font-[gilroy] shadow-md transition duration-200 focus:outline-none focus:ring-2
     ${
       alreadyApplied
         ? "bg-[#14675a] cursor-not-allowed"
         : "bg-[#24cfa5] hover:bg-[#1fb292] text-black focus:ring-[#24cfa5]"
-    }`}
+    } ${applying ? "cursor-wait opacity-70" : ""}`}
           >
-            {alreadyApplied ? "Applied" : "Apply Now"}
+            {applying
+              ? "Applying..."
+              : alreadyApplied
+              ? "Applied"
+              : "Apply Now"}
           </button>
         </div>
       </div>
