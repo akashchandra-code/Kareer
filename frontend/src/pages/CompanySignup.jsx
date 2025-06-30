@@ -4,6 +4,7 @@ import { registerUser } from "../store/actions/AuthActions";
 import { useNavigate } from "react-router-dom";
 import { Building2 } from "lucide-react";
 import { toast } from "react-toastify";
+
 const CompanySignup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -16,11 +17,16 @@ const CompanySignup = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const res = await dispatch(registerUser(formData)).unwrap();
       if (res) {
@@ -34,14 +40,14 @@ const CompanySignup = () => {
   };
 
   return (
-    <div className="min-h-screen  mt-10 flex flex-col md:flex-row">
+    <div className="min-h-screen mt-10 flex flex-col md:flex-row">
       {/* Left Side Branding */}
-      <div className="hidden md:flex w-1/2  text-white items-center justify-center p-10">
+      <div className="hidden md:flex w-1/2 text-white items-center justify-center p-10">
         <div className="text-center">
           <div className="text-[#24cfa5] mb-4 flex justify-center">
             <Building2 className="w-16 h-16" />
           </div>
-          <h1 className="text-3xl  font-[neu] mb-2">Kareer for Employers</h1>
+          <h1 className="text-3xl font-[neu] mb-2">Kareer for Employers</h1>
           <p className="text-gray-400">
             Post jobs, review candidates, and hire faster with our smart hiring
             tools tailored for modern teams.
@@ -60,22 +66,29 @@ const CompanySignup = () => {
           <input
             type="text"
             name="name"
+             autoComplete="off" 
             placeholder="Company Name"
             className="w-full p-3 rounded bg-zinc-800 mb-4"
             onChange={handleChange}
             required
           />
+
           <input
             type="email"
             name="email"
+             autoComplete="off" 
             placeholder="Email"
-            className="w-full p-3 rounded bg-zinc-800 mb-4"
+            className={`w-full p-3 rounded bg-zinc-800 mb-1 ${
+              emailError && "border border-red-500"
+            }`}
             onChange={handleChange}
             required
           />
+
           <input
             type="password"
             name="password"
+             autoComplete="off" 
             placeholder="Password"
             className="w-full p-3 rounded bg-zinc-800 mb-6"
             onChange={handleChange}

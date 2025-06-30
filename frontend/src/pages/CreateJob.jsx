@@ -86,6 +86,7 @@ const CreateJob = () => {
               value={job[name]}
               onChange={handleChange}
               placeholder={placeholder}
+               autoComplete="off" 
               required
               className="w-full p-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white"
             />

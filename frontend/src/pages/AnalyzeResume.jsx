@@ -15,15 +15,27 @@ const AnalyzeResume = () => {
     setFile(e.target.files[0]);
   };
 
-  const handleAnalyze = () => {
-    if (!file) {
-      toast.error("Please upload a resume.");
-      return;
-    }
+  const handleAnalyze = async () => {
+  if (!file) {
+    toast.error("Please upload a resume.");
+    return;
+  }
 
-    dispatch(analyzeResume(file));
-    setAnalyzed(true); 
-  };
+  try {
+    await dispatch(analyzeResume(file)).unwrap();
+    setAnalyzed(true);
+  } catch (error) {
+    console.error("Resume analysis failed:", error);
+
+    // Show a friendly toast error
+    if (error?.message?.includes("Unsupported file format")) {
+      toast.error("Only PDF files are supported. Please upload a valid resume.");
+    } else {
+      toast.error(error?.message || "Something went wrong during analysis.");
+    }
+  }
+};
+
 
   return (
     <div className="min-h-screen mt-15 w-full px-4 sm:px-6 lg:px-8 py-12 text-white">

@@ -7,26 +7,22 @@ const LIMIT = 9;
 const useJobFetcher = () => {
   const dispatch = useDispatch();
   const { jobs, total } = useSelector((state) => state.job);
-
   const [query, setQuery] = useState("");
   const [hasMore, sethasMore] = useState(true);
   const [isLoading, setisLoading] = useState(false);
 
   // Initial jobs fetch on first load or search change
-  useEffect(() => {
-    console.log("initial fetch");
+   useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      dispatch(fetchJobs({ search: query, start: 0, limit: LIMIT }));
+      sethasMore(true);
+      setisLoading(false);
+    }, 500); 
 
-    dispatch(fetchJobs({ search: query, start: 0, limit: LIMIT }));
-    sethasMore(true);
-    setisLoading(false); // ✅ Reset on new query
+    return () => clearTimeout(delayDebounce);
   }, [dispatch, query]);
 
-  // Manual search trigger
-  const handleSearch = () => {
-    dispatch(fetchJobs({ search: query, start: 0, limit: LIMIT }));
-    sethasMore(true);
-    setisLoading(false);
-  };
+  
 
   // Infinite scroll handler
  const fetchMoreJobs = useCallback(async () => {
@@ -58,7 +54,6 @@ const useJobFetcher = () => {
     filteredJobs: jobs,
     query,
     setQuery,
-    handleSearch,
     fetchMoreJobs,
     hasMore,
     isLoading,

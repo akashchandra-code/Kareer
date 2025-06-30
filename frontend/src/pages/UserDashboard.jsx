@@ -9,7 +9,6 @@ const UserDashboard = () => {
     filteredJobs,
     query,
     setQuery,
-    handleSearch,
     fetchMoreJobs,
     hasMore,
     isLoading,
@@ -30,12 +29,7 @@ const UserDashboard = () => {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            <button
-              onClick={handleSearch} // <-- calls dispatch(fetchJobs)
-              className="bg-[#24cfa5] text-black font-[hel] px-4 py-2 rounded-lg hover:bg-[#1fb292] transition duration-200"
-            >
-              Search
-            </button>
+          
 
             <Link to="/analyze-resume">
               <button className="bg-[#24cfa5] font-[hel] text-black px-4 py-2 rounded-lg hover:bg-[#1fb292] transition duration-200">
@@ -72,7 +66,7 @@ const UserDashboard = () => {
                   <p className="text-zinc-400 text-base mb-2 font-[hel]">
                     {job.companyName || "Confidential Company"}
                   </p>
-                  <p className="text-zinc-500 text-sm mb-4 line-clamp-3">
+                  <p className="hidden md:block text-zinc-500 text-sm mb-4 line-clamp-3">
                     {job.shortDescription}
                   </p>
 

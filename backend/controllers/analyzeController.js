@@ -18,9 +18,6 @@ exports.analyzeResume = async (req, res) => {
     if (ext === '.pdf') {
       const extractPDFText = require('../utils/parsePDF');
       resumeText = await extractPDFText(file.path);
-    } else if (ext === '.docx') {
-      const extractDocxText = require('../utils/parseDOCX');
-      resumeText = await extractDocxText(file.path);
     } else {
       return res.status(400).json({ message: 'Unsupported file format' });
     }

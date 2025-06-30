@@ -30,9 +30,17 @@ const CompanyProfile = () => {
       });
     }
   }, [profile]);
-
+  const maxWords = 80;
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "bio") {
+    const wordCount = value.trim().split(/\s+/).length;
+
+    if (wordCount > maxWords) {
+      toast.error(`Bio can't exceed ${maxWords} words`);
+      return;
+    }
+  }
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -107,6 +115,7 @@ const CompanyProfile = () => {
               type="file"
               accept="image/*"
               ref={fileInputRef}
+               autoComplete="off" 
               className="hidden"
               onChange={handleImageChange}
             />
@@ -125,6 +134,7 @@ const CompanyProfile = () => {
             <input
               type="text"
               name="name"
+               autoComplete="off" 
               value={formData.name}
               onChange={handleChange}
               className="w-full p-3 bg-zinc-800 rounded"
@@ -150,6 +160,7 @@ const CompanyProfile = () => {
             name="bio"
             value={formData.bio}
             onChange={handleChange}
+             autoComplete="off" 
             className="w-full p-3 bg-zinc-800 rounded resize-none"
             rows="4"
             placeholder="Tell us about your company..."

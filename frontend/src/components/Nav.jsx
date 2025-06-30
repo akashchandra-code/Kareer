@@ -51,7 +51,7 @@ const Nav = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 w-full z-50 md:px-12 md:py-5 px-4 lg:px-24 py-4 transition-transform duration-300 ${
+      className={`fixed top-0 w-full z-50 md:px-12 md:py-5 px-6 lg:px-24 py-4 transition-transform duration-300 ${
         showNavbar ? "translate-y-0" : "-translate-y-full"
       } backdrop-blur-lg`}
       variants={containerVariants}

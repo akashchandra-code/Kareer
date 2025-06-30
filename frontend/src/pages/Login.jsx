@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../store/actions/AuthActions";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { LogIn } from "lucide-react";
 import { toast } from "react-toastify";
 
@@ -10,13 +9,20 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({ email: "", password: "" });
+  
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const res = await dispatch(loginUser(formData)).unwrap();
       if (res) {
@@ -25,15 +31,14 @@ const Login = () => {
       }
     } catch (error) {
       toast.error(error || "Login failed, Please try again.");
-
       console.error("Login failed:", error);
     }
   };
 
   return (
-    <div className="min-h-screen  mt-10 flex flex-col md:flex-row">
+    <div className="min-h-screen mt-10 flex flex-col md:flex-row">
       {/* Left Branding Section */}
-      <div className="hidden md:flex w-1/2  text-white items-center justify-center p-10">
+      <div className="hidden md:flex w-1/2 text-white items-center justify-center p-10">
         <div className="text-center">
           <div className="text-[#24cfa5] mb-4 flex justify-center">
             <LogIn className="w-16 h-16" />
@@ -59,13 +64,18 @@ const Login = () => {
             type="email"
             name="email"
             placeholder="Email"
-            className="w-full p-3 rounded bg-zinc-800 mb-4"
+             autoComplete="off" 
+            className={`w-full p-3 rounded bg-zinc-800 mb-1 ${
+              emailError && "border border-red-500"
+            }`}
             onChange={handleChange}
             required
           />
+
           <input
             type="password"
             name="password"
+             autoComplete="off" 
             placeholder="Password"
             className="w-full p-3 rounded bg-zinc-800 mb-6"
             onChange={handleChange}

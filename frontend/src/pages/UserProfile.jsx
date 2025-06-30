@@ -36,10 +36,19 @@ const UserProfile = () => {
     }
   }, [profile]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+ const maxWords = 80;
+   const handleChange = (e) => {
+     const { name, value } = e.target;
+     if (name === "bio") {
+     const wordCount = value.trim().split(/\s+/).length;
+ 
+     if (wordCount > maxWords) {
+       toast.error(`Bio can't exceed ${maxWords} words`);
+       return;
+     }
+   }
+     setFormData((prev) => ({ ...prev, [name]: value }));
+   };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];

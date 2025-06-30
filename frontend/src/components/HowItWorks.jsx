@@ -92,7 +92,7 @@ const Card = ({ icon, title, points }) => (
 
 const HowItWorks = () => {
   return (
-    <section className="bg-black text-white py-16 px-4">
+    <section className="bg-black text-white py-16 px-6">
       <h2 className="md:text-[4rem] text-[3rem]  font-[neu] text-center mb-12 md:mb-25">
         How It Works
       </h2>

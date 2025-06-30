@@ -18,6 +18,7 @@ const JobDetail = () => {
   const { appliedJobs } = useSelector((state) => state.application);
   const alreadyApplied = appliedJobs.includes(id);
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     dispatch(fetchJobById(id));
     dispatch(getAppliedJobs());
   }, [dispatch, id]);
