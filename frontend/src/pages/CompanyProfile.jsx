@@ -30,17 +30,9 @@ const CompanyProfile = () => {
       });
     }
   }, [profile]);
-  const maxWords = 80;
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "bio") {
-    const wordCount = value.trim().split(/\s+/).length;
-
-    if (wordCount > maxWords) {
-      toast.error(`Bio can't exceed ${maxWords} words`);
-      return;
-    }
-  }
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -158,6 +150,7 @@ const CompanyProfile = () => {
           <label className="block mb-1 text-sm">Bio</label>
           <textarea
             name="bio"
+            maxLength={200}
             value={formData.bio}
             onChange={handleChange}
              autoComplete="off" 

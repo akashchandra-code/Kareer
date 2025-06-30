@@ -27,7 +27,7 @@ const AnalyzeResume = () => {
   } catch (error) {
     console.error("Resume analysis failed:", error);
 
-    // Show a friendly toast error
+    
     if (error?.message?.includes("Unsupported file format")) {
       toast.error("Only PDF files are supported. Please upload a valid resume.");
     } else {
@@ -54,7 +54,7 @@ const AnalyzeResume = () => {
         <input
           id="resume-upload"
           type="file"
-          accept=".pdf,.doc,.docx"
+          accept=".pdf"
           onChange={handleFileChange}
           className="mb-6 w-full md:w-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-[hel] file:bg-[#24cfa5] file:text-black hover:file:bg-[#1fb292] transition duration-200 cursor-pointer border border-zinc-700 rounded-lg"
         />

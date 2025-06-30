@@ -35,7 +35,7 @@ const UserSignup = () => {
         navigate("/login");
       }
     } catch (error) {
-      toast.error(error || "Registration failed. Please try again.");
+      toast.error(error);
       console.error("Registration failed:", error);
     }
   };
@@ -67,7 +67,7 @@ const UserSignup = () => {
           <input
             type="text"
             name="name"
-             autoComplete="off" 
+            autoComplete="off"
             placeholder="Full Name"
             className="w-full p-3 rounded bg-zinc-800 mb-4"
             onChange={handleChange}
@@ -77,7 +77,7 @@ const UserSignup = () => {
           <input
             type="email"
             name="email"
-             autoComplete="off" 
+            autoComplete="off"
             placeholder="Email"
             className={`w-full p-3 rounded bg-zinc-800 mb-1`}
             onChange={handleChange}
@@ -87,7 +87,7 @@ const UserSignup = () => {
           <input
             type="password"
             name="password"
-             autoComplete="off" 
+            autoComplete="off"
             placeholder="Password"
             className="w-full p-3 rounded bg-zinc-800 mb-6"
             onChange={handleChange}

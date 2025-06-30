@@ -24,7 +24,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (profile) {
-          console.log("🔥 profile from backend:", profile);
+      console.log("🔥 profile from backend:", profile);
       setFormData({
         name: profile.name || "",
         email: profile.email || "",
@@ -36,19 +36,11 @@ const UserProfile = () => {
     }
   }, [profile]);
 
- const maxWords = 80;
-   const handleChange = (e) => {
-     const { name, value } = e.target;
-     if (name === "bio") {
-     const wordCount = value.trim().split(/\s+/).length;
- 
-     if (wordCount > maxWords) {
-       toast.error(`Bio can't exceed ${maxWords} words`);
-       return;
-     }
-   }
-     setFormData((prev) => ({ ...prev, [name]: value }));
-   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -81,27 +73,25 @@ const UserProfile = () => {
     });
   };
 
-const getImageSrc = () => {
-  console.log("🖼 profilePicture value:", formData.profilePicture);
+  const getImageSrc = () => {
+    console.log("🖼 profilePicture value:", formData.profilePicture);
 
-  // If it's a new file uploaded locally
-  if (formData.profilePicture instanceof File) {
-    const localPreview = URL.createObjectURL(formData.profilePicture);
-    console.log("🧾 File preview URL:", localPreview);
-    return localPreview;
-  }
+    // If it's a new file uploaded locally
+    if (formData.profilePicture instanceof File) {
+      const localPreview = URL.createObjectURL(formData.profilePicture);
+      console.log("🧾 File preview URL:", localPreview);
+      return localPreview;
+    }
 
-  // If it's a Cloudinary URL already stored in the DB
-  if (formData.profilePicture && formData.profilePicture.startsWith("http")) {
-    console.log("🌐 Cloudinary image URL:", formData.profilePicture);
-    return formData.profilePicture;
-  }
+    // If it's a Cloudinary URL already stored in the DB
+    if (formData.profilePicture && formData.profilePicture.startsWith("http")) {
+      console.log("🌐 Cloudinary image URL:", formData.profilePicture);
+      return formData.profilePicture;
+    }
 
-  // Default fallback image
-  return "/default-avatar.png";
-};
-
-
+    // Default fallback image
+    return "/default-avatar.png";
+  };
 
   return (
     <div className="min-h-screen mt-10 flex justify-center items-center px-4 py-12 text-white">
