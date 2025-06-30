@@ -65,9 +65,7 @@ const Login = () => {
             name="email"
             placeholder="Email"
              autoComplete="off" 
-            className={`w-full p-3 rounded bg-zinc-800 mb-1 ${
-              emailError && "border border-red-500"
-            }`}
+            className={`w-full p-3 rounded bg-zinc-800 mb-1 `}
             onChange={handleChange}
             required
           />
