@@ -183,6 +183,7 @@ const UserProfile = () => {
           <label className="block mb-1 text-sm">Bio</label>
           <textarea
             name="bio"
+            maxLength={100}
             value={formData.bio}
             onChange={handleChange}
             className="w-full p-3 bg-zinc-800 rounded resize-none"

@@ -26,13 +26,7 @@ const AnalyzeResume = () => {
     setAnalyzed(true);
   } catch (error) {
     console.error("Resume analysis failed:", error);
-
-    
-    if (error?.message?.includes("Unsupported file format")) {
-      toast.error("Only PDF files are supported. Please upload a valid resume.");
-    } else {
-      toast.error(error?.message || "Something went wrong during analysis.");
-    }
+    toast.error(error );
   }
 };
 

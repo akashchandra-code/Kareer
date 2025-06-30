@@ -150,7 +150,7 @@ const CompanyProfile = () => {
           <label className="block mb-1 text-sm">Bio</label>
           <textarea
             name="bio"
-            maxLength={200}
+            maxLength={100}
             value={formData.bio}
             onChange={handleChange}
              autoComplete="off" 
