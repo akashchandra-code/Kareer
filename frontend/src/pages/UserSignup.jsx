@@ -79,9 +79,7 @@ const UserSignup = () => {
             name="email"
              autoComplete="off" 
             placeholder="Email"
-            className={`w-full p-3 rounded bg-zinc-800 mb-1 ${
-              emailError && "border border-red-500"
-            }`}
+            className={`w-full p-3 rounded bg-zinc-800 mb-1`}
             onChange={handleChange}
             required
           />
