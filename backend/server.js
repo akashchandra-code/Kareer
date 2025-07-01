@@ -39,7 +39,14 @@ app.use(express.static(path.join(_dirname, 'frontend', 'dist')));
 app.use((req, res) => {
     res.sendFile(path.resolve(_dirname, 'frontend', 'dist', 'index.html'));
 });
+app.use((err, req, res, next) => {
+  if (err.message && err.message.includes("Only")) {
+    return res.status(400).json({ message: err.message });
+  }
 
+  console.error(err);
+  res.status(500).json({ message: "Internal server error" });
+});
 // Server + DB
 const PORT = process.env.PORT || 5000;
 connectDB()
