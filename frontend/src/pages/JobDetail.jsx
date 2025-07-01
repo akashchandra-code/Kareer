@@ -29,8 +29,8 @@ const JobDetail = () => {
       return;
     }
     const allowedExtensions = [".pdf"];
-    const fileExtension = file.name
-      .slice(file.name.lastIndexOf("."))
+    const fileExtension = resumeFile.name
+      .slice(resumeFile.name.lastIndexOf("."))
       .toLowerCase();
 
     if (!allowedExtensions.includes(fileExtension)) {
