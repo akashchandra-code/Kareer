@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile, getProfile } from "../store/actions/ProfileActions";
 import { toast } from "react-toastify";
-
+import pfp from "../assets/pfp.jpg"
 const UserProfile = () => {
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
@@ -90,7 +90,7 @@ const UserProfile = () => {
     }
 
     // Default fallback image
-    return "/default-avatar.png";
+    return pfp;
   };
 
   return (
@@ -183,7 +183,7 @@ const UserProfile = () => {
           <label className="block mb-1 text-sm">Bio</label>
           <textarea
             name="bio"
-            maxLength={100}
+            maxLength={250}
             value={formData.bio}
             onChange={handleChange}
             className="w-full p-3 bg-zinc-800 rounded resize-none"

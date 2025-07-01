@@ -20,6 +20,13 @@ const AnalyzeResume = () => {
     toast.error("Please upload a resume.");
     return;
   }
+  const allowedExtensions = [".pdf"];
+  const fileExtension = file.name.slice(file.name.lastIndexOf(".")).toLowerCase();
+
+  if (!allowedExtensions.includes(fileExtension)) {
+    toast.error("Only PDF files are allowed.");
+    return;
+  }
 
   try {
     await dispatch(analyzeResume(file)).unwrap();

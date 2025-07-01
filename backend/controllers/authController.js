@@ -27,11 +27,14 @@ exports.register = async (req, res) => {
         .status(400)
         .json({ message: "Please enter a valid email address" });
     }
+    const strongPasswordRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-])[A-Za-z\d!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]{6,}$/;
 
-    if (password.length < 6) {
-      return res
-        .status(400)
-        .json({ message: "password must be atleast 6 characters" });
+    if (!strongPasswordRegex.test(password)) {
+      return res.status(400).json({
+        message:
+          "Password must be at least 6 characters and include at least one letter, one number, and one special character",
+      });
     }
     const existing = await User.findOne({ email });
     if (existing)

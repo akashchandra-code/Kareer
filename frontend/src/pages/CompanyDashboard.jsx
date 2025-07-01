@@ -5,6 +5,8 @@ import { Link, useLocation } from "react-router-dom";
 import Loading from "../components/Loading";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import Lottie from "lottie-react";
+import noJobsAnimation from "../assets/animation.json";
 
 const CompanyDashboard = () => {
   const dispatch = useDispatch();
@@ -14,7 +16,6 @@ const CompanyDashboard = () => {
 
   // ✅ Fetch jobs when location changes (e.g., after going back from create page)
   useEffect(() => {
-   
     dispatch(fetchCompanyJobs());
   }, [dispatch, location.pathname]);
 
@@ -54,7 +55,6 @@ const CompanyDashboard = () => {
 
   // ✅ Log jobs every render for debugging
   useEffect(() => {
-   
     if (!Array.isArray(jobs)) {
     }
   }, [jobs]);
@@ -109,9 +109,16 @@ const CompanyDashboard = () => {
           ))}
         </div>
       ) : (
-        <p className="text-zinc-400 text-center py-10 text-lg">
-          No jobs posted yet.
-        </p>
+        <div className="flex flex-col items-center justify-center h-[60vh] sm:h-[70vh] text-center">
+          <Lottie
+            animationData={noJobsAnimation}
+            loop
+            className="w-[80%] max-w-md sm:max-w-lg md:max-w-xl"
+          />
+          <p className="text-zinc-400 mt-6 text-lg sm:text-xl">
+            No jobs posted yet.
+          </p>
+        </div>
       )}
     </div>
   );
