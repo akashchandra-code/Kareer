@@ -25,8 +25,8 @@ const AnalyzeResume = () => {
     await dispatch(analyzeResume(file)).unwrap();
     setAnalyzed(true);
   } catch (error) {
+    toast.error(error);
     console.error("Resume analysis failed:", error);
-    toast.error(error );
   }
 };
 

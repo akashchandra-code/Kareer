@@ -15,9 +15,8 @@ export const analyzeResume = createAsyncThunk(
 
       return res.data.matchedJobs;
     } catch (err) {
-      return rejectWithValue(
-        err.response?.data?.message || "Resume analysis failed"
-      );
+      const message = err.response?.data?.message || "Resume analysis failed";
+      return rejectWithValue(message);
     }
   }
 );
