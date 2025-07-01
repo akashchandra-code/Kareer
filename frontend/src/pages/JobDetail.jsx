@@ -28,9 +28,12 @@ const JobDetail = () => {
       toast.error("please upload your resume ");
       return;
     }
-    const allowedTypes = ["application/pdf"];
+    const allowedExtensions = [".pdf"];
+    const fileExtension = file.name
+      .slice(file.name.lastIndexOf("."))
+      .toLowerCase();
 
-    if (!allowedTypes.includes(file.type)) {
+    if (!allowedExtensions.includes(fileExtension)) {
       toast.error("Only PDF files are allowed.");
       return;
     }
